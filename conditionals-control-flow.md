@@ -1,6 +1,6 @@
 # Conditionals and Control Flow
 
-In Java (and indeed all programming) a key feature is to be able to control the order in which the statements you write in your code are executed. This is achieved through _conditional_ statements.
+In Javascript (and indeed all programming) a key feature is to be able to control the order in which the statements you write in your code are executed. This is achieved through _conditional_ statements.
 
 ## Boolean operators
 
@@ -12,23 +12,23 @@ Before looking at conditional statements, it's worth visiting some more common o
 
 The "and" operator returns `true` only if both of its inputs were true:
 
-```java
-boolean firstAnd = (1 == 1) && (2 == 2); // This is true
-boolean secondAnd = (1 == 1) && (2 == 3); // This is false
+```javascript
+let firstAnd = (1 === 1) && (2 === 2); // This is true
+let secondAnd = (1 === 1) && (2 === 3); // This is false
 ```
 
 The "or" operator returns `true` if either of its inputs is true. 
 
-```java
-boolean firstOr = (1 == 1) || (2 == 3); // This is true
-boolean secondOr = (1 == 2) || (3 == 4); //This is false
+```javascript
+let firstOr = (1 === 1) || (2 === 3); // This is true
+let secondOr = (1 === 2) || (3 === 4); //This is false
 ```
 
 The "not" operator turns `true` into `false` and `false` into `true`:
 
-```java
-boolean firstNot = !(1 == 1); // This is false
-boolean secondNot = !(1 == 2); // This is true
+```javascript
+let firstNot = !(1 === 1); // This is false
+let secondNot = !(1 === 2); // This is true
 ```
 
 ## Conditional statements
@@ -39,19 +39,19 @@ The first and most important way you control the flow of your program is through
 
 #### The plain "if" statement
 
-The most common conditional statement is the "if" statement. In Java, it consists of three parts:
+The most common conditional statement is the "if" statement. In Javascript, it consists of three parts:
 
 1. The `if` keyword
 2. A boolean expression, contained in parentheses
 3. A block of code, inside curly braces, that is executed if the boolean expression is true.
 
-```java
+```javascript
 if (9 > 2) {
-    System.out.println("This will be displayed");
+    console.log("This will be displayed");
 }
 
 if (3 > 5) {
-    System.out.println("This will not be displyed");
+    console.log("This will not be displyed");
 }
 ```
 
@@ -63,11 +63,12 @@ Sometimes, if the condition of your "if" statement is not true, you want to do s
 
 2. Otherwise, if the boolean expression evaluates to `false`, then the block of code after the "else" is executed.
 
-```java
-if (1 == 2) {
-    System.out.println("1 is equal to 2");
-} else {
-    System.out.println("1 is not equal to 2");
+```javascript
+if (1 === 2) {
+    console.log("1 is equal to 2");
+}
+else {
+    console.log("1 is not equal to 2");
 }
 ```
 
@@ -81,22 +82,24 @@ In some cases, we need to execute a separate block of code depending on multiple
 
 3. Finally, if none of the previous boolean expressions evaulate to `true`, then the block of code in the "else" block will run.
 
-```java
-int myScore = 2;
-int yourScore = 3;
+```javascript
+let myScore = 2;
+let yourScore = 3;
 
 if (myScore > yourScore) {
-    System.out.println("I beat you!");
-} else if (myScore == yourScore) {
-    System.out.println("We drew");
-} else {
-    System.out.println("You beat me!");
+    console.log("I beat you!");
+}
+else if (myScore === yourScore) {
+    console.log("We drew");
+}
+else {
+    console.log("You beat me!");
 }
 ```
 
 ### The ternary conditional
 
-Java contains a special syntax that can be shorter than an "if" statement in certain cases. it is called the "ternary" conditional. It consists of three parts:
+Javascript contains a special syntax that can be shorter than an "if" statement in certain cases. it is called the "ternary" conditional. It consists of three parts:
 
 1. A boolean expression, followed by a question mark.
 2. A first alternative result that will be used if the condition is true.
@@ -104,9 +107,9 @@ Java contains a special syntax that can be shorter than an "if" statement in cer
 
 The two alternatives are separated by a colon (`:`);
 
-```java
-int pointsScored = 19;
-char gameResult = (pointsScore > 20) ? 'W' : 'L';
+```javascript
+let pointsScored = 19;
+let gameResult = (pointsScore > 20) ? 'W' : 'L';
 ```
 
 In the above code block, the boolean expression evaulates to `false`, so the second of the two alternatives (`'L'`) is used as the result of the expression.

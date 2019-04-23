@@ -1,191 +1,162 @@
 # Collections
 
-Previously you've seen how to declare variables of a particular type and assign them values:
+Previously you've seen how to declare variables and assign them values:
 
-```java
-int x = 1;
+```javascript
+let x = 1;
 ```
 
 What if you want to deal with an arbitrary amount of objects, all of the same type/ You can't write something like this:
 
-```java
-int firstNumber = 1;
-int secondNumber = 2;
-int thirdNumber = 3;
-int fourthNumber = 4;
+```javascript
+let firstNumber = 1;
+let secondNumber = 2;
+let thirdNumber = 3;
+let fourthNumber = 4;
 
 // This is getting out of hand!
 ```
 
-Instead, Java provides some data types that represent a whole group of things all at once. Here are two of the most important, and how to use them.
+Instead, Javascript provides some data types that represent a whole group of things all at once. Here are two of the most important, and how to use them.
 
-## List
+## Array
 
-In Java, the `List` stores a sequential list of data of a specified type. 
+In Javascript, we use an `array` to store a list of items. 
 
-### Creating a List
+### Creating an array
 
-Here's an example of creating a new (empty) list that will hold integer values:
+Here's an example of creating a new (empty) array:
 
-```java
-List<Integer> scores = new ArrayList<>();
+```javascript
+let luckyNumbers = [];
 ```
 
-The type that goes in between the angle brackets (in this case `Integer`) is the type of object that will go in our list. Since we want a list of integers, we use the `Integer` type.
+Or, we can create an array pre-populated with values:
 
-### Adding items to a List
+```javascript
+let luckyNumbers = [4, 8, 15, 16, 23, 42];
+```
 
-You can add items to a `List` using the `add` method:
+### Adding items to an array
 
-```java
-List<Integer> luckyNumbers = new ArrayList<>();
-luckyNumbers.add(4);
-luckyNumbers.add(8);
-luckyNumbers.add(15);
-luckyNumbers.add(16);
-luckyNumbers.add(23);
-luckyNumbers.add(42);
+You can add items to an `array` using the `push()` method:
+
+```javascript
+let luckyNumbers = [4, 8, 15, 16];
+
+luckyNumbers.push(23);
+luckyNumbers.push(42);
 
 // luckyNumbers now holds the data [4, 8, 15, 16, 23, 42]
 ```
 
-### Getting items out of a List
+### Getting items out of an array
 
-You can get items out of a list using the `get` method:
+You can get items out of an array using the `[ ]` notation:
 
-```java
-// Filling up the list just as above
-List<Integer> luckyNumbers = new ArrayList<>();
-luckyNumbers.add(4);
-luckyNumbers.add(8);
-luckyNumbers.add(15);
-luckyNumbers.add(16);
-luckyNumbers.add(23);
-luckyNumbers.add(42);
+```javascript
+// Create the array just as above
+let luckyNumbers = [4, 8, 15, 16, 23, 42];
 
-// Getting numbers out of the list
-int four = luckyNumbers.get(0);
-int twentyThree = luckyNumbers.get(4);
+// Getting numbers out of the array
+let four = luckyNumbers[0];
+let twentyThree = luckyNumbers[4];
 ```
 
-### Inserting items into the middle of a List
+### Inserting items into the middle of an array
 
-You can insert items into the middle of a List using a variant of the `add` method that also accepts an index to insert the item at:
+You can add or remove items in the middle of an array using the `splice` method.
 
-```java
-List<Integer> numbers = new ArrayList<>();
-numbers.add(1);
-numbers.add(2);
-numbers.add(3);
+```javascript
+splice(startIndex, numberOfItemsToDelete, itemToAdd, itemToAdd, itemToAdd, ...)
+```
 
-// numbers is now [1, 2, 3]
+You use the `splice` method like this:
+
+```javascript
+let numbers = [1, 2, 3];
 
 // Insert 4 at the beginning (index 0)
-numbers.add(0, 4);
+// splice(0, 0, 4) means "At index 0, delete 0 items and add the item '4'"
+numbers.splice(0, 0, 4);
+
 // numbers is now [4, 1, 2, 3]
 
 // Insert 5 in the middle (index 2)
-numbers.add(2, 5);
+// splice(2, 0, 5) means "At index 2, delete 0 items and add the item '5'"
+numbers.splice(2, 0, 5);
+
 // numbers is now [4, 1, 5, 2, 3]
 ```
 
-### Iterating over a List
+### Iterating over an array
 
-You can iterate over every item in a list in two ways.
+You can iterate over every item in an array in two ways.
 
 Firstly using a plain for-loop:
 
-```java
-List<String> words = new ArrayList<>();
-words.add("Veni");
-words.add("Vidi");
-words.add("Vici");
+```javascript
+let words = ["Lights", "Cameras", "Action"];
 
-for (int index = 0; index < words.size(); index++) {
-    System.out.println(words.get(index));
+for (let index = 0; index < words.length; index++) {
+    console.log(words[index]);
 }
 ```
 
-This code loops over each index from 0 to the size of the list, and for each index, gets that item from the list and prints it out.
+This code loops over each index from 0 to the length of the array, and for each index, gets that item from the array and prints it out.
 
-You can also iterate over the items of a list directly without needing to use the index:
+## Objects
 
-```java
-List<String> words = new ArrayList<>();
-words.add("Veni");
-words.add("Vidi");
-words.add("Vici");
+Obejcts in Javascript can be used a bit like a dictionary. Whereas a dictionary contains a set of words and a definition for each word, objects contains a set of _keys_ and a _value_ for each key.
 
-for (String word : words) {
-    System.out.println(word);
-}
+When you look up a word in a dictionary, you can get the definition for that word. Similarly, when you look up a _key_ on an object, you can retrieve the _value_ associated with that key.
+
+### Creating an object
+
+You can create an empty object using the following code:
+
+```javascript
+let agesOfPeople = {};
 ```
 
-This automatically loops over every `String` kept in `words` and assgns it to a variable called `word`, which is then printed in the body of the loop.
+Or, you can create an object pre-populated with values:
 
-## Map
-
-The `Map` structure in Java acts a bit like a dictionary. Whereas a dictionary contains a set of words and a definition for each word, a `Map` contains a set of _keys_ and a _value_ for each key.
-
-When you look up a word in a dictionary, you can get the definition for that word. Similarly, when you look up a _key_ in a `Map`, you can retrieve the _value_ associated with that key.
-
-### Creating a Map
-
-You can create a `Map` using the following code:
-
-```java
-Map<String, Integer> agesOfPeople = new HashMap<>();
+```javascript
+let agesOfPeople = {
+    "Sam": 24,
+    "Tom": 22
+};
 ```
 
-This creates a `Map` where the keys are of type `String` and the values are of type `Integer`.
+### Adding / changing values on an object
 
-### Adding values to a Map
+You can add or change values on an object using the `[ ]` notation.  
+We must specify the key we want to add or edit, and the value that should be associated with it.  
+For example, to store the ages of some people:
 
-You can add values to a `Map` using the `put` method. The `put` method accepts the key you want to save, and the value that should be associated with it. For example, to store the ages of some people:
+```javascript
+let agesOfPeople = {
+    "Sam": 24,
+    "Tom": 22
+};
 
-```java
-Map<String, Integer> agesOfPeople = new HashMap<>();
-agesOfPeople.put("Sam", 24);
-agesOfPeople.put("Tom", 22);
+// We can add Amy's age like this:
+agesOfPeople["Amy"] = 27;
+
+// And we can change Tom's age in the same way, like this:
+agesOfPeople["Tom"] = 23;
 ```
 
-### Getting values out of a Map
+### Getting values out of an object
 
-You can look up the value associated with a particular key using the `get` method on `Map`:
+You can look up the value associated with a particular key using the `[ ]` notation:
 
-```java
-Map<String, Integer> agesOfPeople = new HashMap<>();
-agesOfPeople.put("Sam", 24);
-agesOfPeople.put("Tom", 22);
+```javascript
+let agesOfPeople = {
+    "Sam": 24,
+    "Tom": 22
+};
 
-int samsAge = agesOfPeople.get("Sam");
-int tomsAge = agesOfPeople.get("Tom");
-```
-
-### Iterating over a Map
-
-You can iterate over the keys of a map like this:
-
-```java
-Map<String, Integer> myMap;
-
-// ...
-
-for (String key : myMap.keySet()) {
-    System.out.println(key + " : " + myMap.get(key));
-}
-```
-
-This code will loop over all the keys of `myMap` and print out each key along with its associated value.
-
-If you don't care about keys and just want the values, you  can do so using a loop like this:
-
-```java
-Map<String, Integer> myMap;
-
-// ...
-
-for (Integer value : myMap.values()) {
-    System.out.println(value);
-}
+let samsAge = agesOfPeople["Sam"];
+let tomsAge = agesOfPeople["Tom"];
 ```
